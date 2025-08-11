@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tyler Crane | PASC ePortfolio</title>
+  <meta name="description" content="PASC ePortfolio for Tyler Crane. Special education teacher and aspiring administrator focused on relationships, equity, and shared leadership." />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --muted: #94a3b8;
+      --text: #e5e7eb;
+      --accent: #38bdf8;
+      --accent-2: #22c55e;
+      --ring: #7dd3fc;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 700px at 70% -10%, #1e293b 0%, var(--bg) 60%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Layout */
+    .container { width: min(1100px, 94%); margin: 0 auto; }
+    header {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+    .brand { font-weight: 700; letter-spacing: 0.2px; }
+    .brand span { color: var(--accent); }
+    .menu { display: flex; gap: 18px; flex-wrap: wrap; }
+    .menu a { padding: 6px 10px; border-radius: 10px; color: var(--text); }
+    .menu a.active, .menu a:focus-visible { outline: none; background: rgba(56, 189, 248, 0.15); box-shadow: 0 0 0 2px rgba(125, 211, 252, 0.35) inset; }
+    .menu-toggle { display: none; }
+
+    /* Hero */
+    .hero { padding: 64px 0 24px; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 28px; align-items: center; }
+    .hero-card { background: linear-gradient(180deg, rgba(17, 24, 39, 0.9), rgba(17, 24, 39, 0.6)); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 16px; padding: 26px; box-shadow: 0 10px 30px rgba(0,0,0,0.25); }
+    .hero h1 { font-size: clamp(28px, 4.5vw, 44px); margin: 0 0 6px; }
+    .subtitle { color: var(--muted); margin-top: 0; }
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0 0; }
+    .tag { font-size: 12px; padding: 6px 10px; border-radius: 999px; background: rgba(56, 189, 248, 0.14); border: 1px solid rgba(56, 189, 248, 0.35); }
+
+    .headshot { background: linear-gradient(180deg, rgba(56, 189, 248, 0.2), rgba(34, 197, 94, 0.15)); border: 1px solid rgba(148, 163, 184, 0.25); border-radius: 18px; aspect-ratio: 1 / 1; display: grid; place-items: center; font-weight: 700; font-size: 22px; color: #0b1220; text-align: center; }
+
+    /* Section */
+    section { padding: 36px 0; }
+    .section-title { font-size: 24px; margin: 0 0 14px; }
+    .panel { background: linear-gradient(180deg, rgba(17, 24, 39, 0.9), rgba(17, 24, 39, 0.6)); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 16px; padding: 22px; }
+
+    /* Grid cards */
+    .grid { display: grid; gap: 16px; }
+    .grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+
+    .card { background: rgba(2, 6, 23, 0.35); border: 1px solid rgba(148, 163, 184, 0.18); border-radius: 14px; padding: 16px; }
+    .card h3 { margin: 0 0 6px; font-size: 18px; }
+    .meta { font-size: 12px; color: var(--muted); }
+
+    /* Timeline */
+    .timeline { position: relative; padding-left: 18px; }
+    .timeline::before { content: ""; position: absolute; top: 2px; bottom: 2px; left: 7px; width: 2px; background: rgba(148, 163, 184, 0.25); }
+    .t-item { position: relative; margin: 12px 0; }
+    .t-item::before { content: ""; position: absolute; left: -2px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25); }
+
+    /* Table */
+    table { width: 100%; border-collapse: collapse; }
+    th, td { text-align: left; padding: 10px; border-bottom: 1px solid rgba(148, 163, 184, 0.2); }
+    th { color: var(--muted); font-weight: 600; }
+
+    /* Buttons */
+    .btn { display: inline-block; padding: 10px 14px; border-radius: 10px; border: 1px solid rgba(148, 163, 184, 0.3); background: rgba(56, 189, 248, 0.15); color: var(--text); text-decoration: none; font-weight: 600; }
+    .btn:hover { filter: brightness(1.1); }
+
+    /* Footer */
+    footer { padding: 28px 0 56px; color: var(--muted); font-size: 14px; }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; }
+      .grid.cols-2 { grid-template-columns: 1fr; }
+      .grid.cols-3 { grid-template-columns: 1fr; }
+      .menu { display: none; }
+      .menu.open { display: flex; margin-top: 8px; }
+      .menu-toggle { display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 10px; border: 1px solid rgba(148, 163, 184, 0.3); background: rgba(2, 6, 23, 0.35); color: var(--text); }
+    }
+
+    /* Print friendly */
+    @media print {
+      header, .menu-toggle, .btn { display: none !important; }
+      body { background: #fff; color: #111; }
+      .panel, .card { background: #fff; border: 1px solid #ddd; box-shadow: none; }
+      a { color: #000; text-decoration: underline; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">Tyler Crane <span>ePortfolio</span></div>
+      <button aria-label="Toggle menu" class="menu-toggle" onclick="toggleMenu()">Menu ▾</button>
+      <nav class="menu" id="menu">
+        <a href="#about">About</a>
+        <a href="#vision">Vision</a>
+        <a href="#domains">Domains</a>
+        <a href="#artifacts">Artifacts</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero" id="about">
+      <div class="hero-card">
+        <h1>Tyler Crane</h1>
+        <p class="subtitle">Special Education Teacher • Aspiring Administrator • Relationship-centered leadership</p>
+        <p>
+          I help students, staff, and families feel seen and supported.  My practice centers on equity, student voice, and restorative practices.  I am pursuing the Preliminary Administrative Services Credential to expand my impact and lead with care, clarity, and shared purpose.
+        </p>
+        <div class="tags">
+          <span class="tag">Relationships</span>
+          <span class="tag">Equity</span>
+          <span class="tag">Student Voice</span>
+          <span class="tag">Restorative Practices</span>
+          <span class="tag">Shared Leadership</span>
+        </div>
+      </div>
+      <div class="headshot" aria-label="Headshot placeholder">
+        Add your photo
+      </div>
+    </section>
+
+    <!-- VISION -->
+    <section id="vision">
+      <h2 class="section-title">Mission, Vision, and Values</h2>
+      <div class="panel">
+        <div class="grid cols-2">
+          <div class="card">
+            <h3>Mission</h3>
+            <p>Build a safe, inclusive community where every learner is known by name, strength, and story.  Partner with families and colleagues to deliver instruction that is responsive, rigorous, and joyful.</p>
+          </div>
+          <div class="card">
+            <h3>Vision</h3>
+            <p>Students graduate as confident problem solvers and compassionate people who advocate for themselves and others.  Staff collaborate through cycles of inquiry that improve outcomes and honor student voice.</p>
+          </div>
+          <div class="card">
+            <h3>Values</h3>
+            <ul>
+              <li>Relationships first, always</li>
+              <li>Equity and access in every decision</li>
+              <li>High expectations with high support</li>
+              <li>Shared leadership and transparency</li>
+              <li>Curiosity, reflection, and continuous improvement</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Evidence of Impact</h3>
+            <ul>
+              <li>Improved IEP goal attainment</li>
+              <li>Reduced referrals through restorative practices</li>
+              <li>Family engagement metrics and feedback</li>
+              <li>Team learning artifacts and action plans</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOMAINS -->
+    <section id="domains">
+      <h2 class="section-title">PASC Domains</h2>
+      <div class="panel">
+        <div class="grid cols-3">
+          <div class="card">
+            <h3>1. Visionary Leadership</h3>
+            <p>Artifacts: Personal and professional vision.  School vision alignment.  Community engagement plan.</p>
+            <p class="meta">Upload PDFs, slides, or links below.</p>
+          </div>
+          <div class="card">
+            <h3>2. Instructional Leadership</h3>
+            <p>Artifacts: Observation cycles, feedback notes, PLC agendas, lesson studies, and data reflections.</p>
+          </div>
+          <div class="card">
+            <h3>3. Equity and Cultural Responsiveness</h3>
+            <p>Artifacts: Equity audits, access plans, SPED inclusion models, and translation resources.</p>
+          </div>
+          <div class="card">
+            <h3>4. Community and Family Engagement</h3>
+            <p>Artifacts: Family communication plan, event flyers, surveys, and partnership MOUs.</p>
+          </div>
+          <div class="card">
+            <h3>5. Ethics and Professional Norms</h3>
+            <p>Artifacts: Reflective journals, case studies, confidentiality training, and policies.</p>
+          </div>
+          <div class="card">
+            <h3>6. Operations and Management</h3>
+            <p>Artifacts: Schedules, budgets, safety plans, and systems maps.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARTIFACTS TABLE -->
+    <section id="artifacts">
+      <h2 class="section-title">Artifact Repository</h2>
+      <div class="panel">
+        <p>Link your evidence here.  You can host items in Google Drive, OneDrive, or Dropbox and paste share links.</p>
+        <table aria-label="Artifacts">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Domain</th>
+              <th>Type</th>
+              <th>Link</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Leadership Philosophy</td>
+              <td>5</td>
+              <td>Google Doc</td>
+              <td><a href="https://docs.google.com/document/d/1l31Z-OiP1HiH1sUl0NYhClQKTU0ql8_4_b3iXEBk47s/edit?usp=sharing" target="_blank" rel="noopener">Open</a></td>
+              <td>Beliefs and leadership approach</td>
+            </tr>
+            <tr>
+              <td>Personal and Professional Vision</td>
+              <td>1</td>
+              <td>Google Doc</td>
+              <td><a href="https://docs.google.com/document/d/1LqOPRGugNGE0uznsDDHA0TOMU-9n_WZA_9a1qmiFbYg/edit?usp=sharing" target="_blank" rel="noopener">Open</a></td>
+              <td>Vision statement for PASC</td>
+            </tr>
+            <tr>
+              <td>Equity and Adequacy: School Resources</td>
+              <td>3</td>
+              <td>Google Doc</td>
+              <td><a href="https://docs.google.com/document/d/1pgU3mLc1PYrgf-JwRNkGga5JtD-kQVwuR_sMtydn57E/edit?usp=sharing" target="_blank" rel="noopener">Open</a></td>
+              <td>Equity analysis and findings</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE TIMELINE -->
+    <section id="experience">
+      <h2 class="section-title">Experience</h2>
+      <div class="panel">
+        <div class="timeline">
+          <div class="t-item">
+            <h3>Special Education Teacher, Nelson Avenue Middle School</h3>
+            <div class="meta">2019 to Present • Chico, California</div>
+            <p>Led IEP development and implementation for students with mild to moderate disabilities.  Partnered with families.  Launched restorative routines that improved classroom climate and student ownership.</p>
+          </div>
+          <div class="t-item">
+            <h3>Resource and SDC Teacher, Elementary and Middle</h3>
+            <div class="meta">Previous roles</div>
+            <p>Designed inclusive instruction, supported general education access, and built student confidence through strengths-based practices.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUME -->
+    <section id="resume">
+      <h2 class="section-title">Resume</h2>
+      <div class="panel">
+        <p>Keep a downloadable copy of your resume available for hiring panels.</p>
+        <a class="btn" href="#" download>Download Resume PDF</a>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <div class="panel grid cols-2">
+        <div class="card">
+          <h3>Get in touch</h3>
+          <p>Email: <a href="mailto:you@example.com">you@example.com</a></p>
+          <p>LinkedIn: <a href="#">Add your profile</a></p>
+        </div>
+        <div class="card">
+          <h3>References</h3>
+          <p>Available upon request.  Include contact info for supervisors and colleagues who can speak to your leadership and collaboration.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div>© <span id="year"></span> Tyler Crane.  All rights reserved.</div>
+    <div class="meta">This site is a single HTML file for easy sharing and printing.  Host it anywhere or convert sections into Google Sites pages.</div>
+  </footer>
+
+  <script>
+    const year = new Date().getFullYear();
+    document.getElementById('year').textContent = year;
+
+    function toggleMenu(){
+      const m = document.getElementById('menu');
+      m.classList.toggle('open');
+    }
+
+    // Highlight active section link on scroll
+    const links = Array.from(document.querySelectorAll('.menu a'));
+    const sections = links.map(a => document.querySelector(a.getAttribute('href')));
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = '#' + entry.target.id;
+          links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0.01 });
+
+    sections.forEach(sec => sec && observer.observe(sec));
+  </script>
+</body>
+</html>
